@@ -54,7 +54,22 @@ static zztoken gettok(std::fstream file) {
 
 		number = strtod(number_str.c_str(), 0);
 		return zznumber;
+
+	} else if (last_char == '#') {   // 1 line comment
+		do
+			file.get(last_char);
+		while (last_char != EOF && last_char != '\n' && last_char != '\r');
+
+		if (last_char != EOF)
+			return gettok(file)
 	}
+
+	if (last_char == EOF)
+		return zzeof;
+
+	int c = last_char;
+	file.get(last_char);
+	return c;
 }
 
 
