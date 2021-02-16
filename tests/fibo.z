@@ -1,0 +1,12 @@
+# Zeta language:
+# Fibonacci numbers
+# test
+
+fun fibo(x)
+	if x < 3 then
+		1
+	else
+		fibo(x-1) + fibo(x-2)
+
+
+print(fibo(40)) # 40th fibonacci number
