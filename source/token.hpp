@@ -30,7 +30,18 @@ static zztoken gettok(std::fstream file) {
 	while (isspace(last_char))
 		file.get(last_char);
 
-	if (isalpha(last_char)) {
+	if (last_char == '"' || last_char == '\'') {
+		int used_char = last_char;
+		identifier = last_char;
+		file.get(last_char);
+		while (last_char != used_char) {
+			identifier += last_char;
+			file.get(last_char);
+		}
+
+		return zzstring;
+
+	} else if (isalpha(last_char)) {
 		identifier = last_char;
 		file.get(last_char);
 		while (isalnum(last_char)) {
