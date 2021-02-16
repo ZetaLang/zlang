@@ -1,0 +1,10 @@
+# Zeta language:
+# external functions
+# test
+
+ext sin(number)
+ext cos(number)
+
+let pi = 3 + .14159265
+
+print(sin(pi) + cos(pi))
