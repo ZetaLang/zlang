@@ -49,4 +49,28 @@ public:
 };
 
 
+/* function prototype AST */
+class prototypeAST {
+	std::string Name;
+	std::vector<std::string> Args;
+
+public:
+	PrototypeAST(const std::string& name, std::vector<std::string> Args)
+		: Name(name), Args(std::move(Args)) {}
+
+	const std::string& getName() const { return Name; }
+};
+
+/* finally, function AST */
+class functionAST {
+	std::unique_ptr<prototypeAST> Proto;
+	std::unique_ptr<__EXPRESSION_AST__> Body;
+
+public:
+	FunctionAST(std::unique_ptr<prototypeAST> Proto,
+		std::unique_ptr<__EXPRESSION_AST__> Body)
+		: Proto(std::move(Proto)), Body(std::move(Body)) {}
+};
+
+
 #endif /* !__ZLANG_AST_HPP__ */
