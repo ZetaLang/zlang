@@ -18,6 +18,14 @@ public:
 	numexprAST(double Val) : Val(Val) {}
 };
 
+/* string expression AST */
+class strexprAST : public __EXPRESSION_AST__ {
+	std::string Val;
+
+public:
+	strexprAST(const std::string& Val) : Val(Val) {}
+};
+
 /* variable expression AST */
 class varexprAST : public __EXPRESSION_AST__ {
 	std::string Name;
