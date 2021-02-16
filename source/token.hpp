@@ -21,6 +21,7 @@ typedef enum __ZZ_TOKEN__ {
 
 
 static std::string identifier;
+static std::string string;
 static double      number;
 
 
@@ -32,10 +33,10 @@ static zztoken gettok(std::fstream file) {
 
 	if (last_char == '"' || last_char == '\'') {
 		int used_char = last_char;
-		identifier = last_char;
+		string = last_char;
 		file.get(last_char);
 		while (last_char != used_char) {
-			identifier += last_char;
+			string += last_char;
 			file.get(last_char);
 		}
 
