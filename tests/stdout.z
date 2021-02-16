@@ -1,0 +1,6 @@
+# Zeta language:
+# text printing test
+
+print("a")
+puts("b")
+println("c")
