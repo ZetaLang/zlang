@@ -29,9 +29,17 @@ public:
 /* variable expression AST */
 class varexprAST : public __EXPRESSION_AST__ {
 	std::string Name;
+	bool Mutable;
 
 public:
-	varexprAST(const std::string& Name) : Name(Name) {}
+	varexprAST(const std::string& Name, bool Mutable) : Name(Name), Mutable(Mutable) {}
+
+	bool is_constant() {
+		if (!this->Mutable)
+			return true;
+		else
+			return false;
+	}
 };
 
 /* binary expression AST */
