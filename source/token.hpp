@@ -10,13 +10,14 @@ typedef enum __ZZ_TOKEN__ {
 	zzeof = -1,
 
 	/* keywords */
-	zzfun = -2,     // fun [function_name][args] | function definition
-	zzext = -3,     // ext [function_name][args] | extern function definition
+	zzfun = -2,     // fun [function_name][args]    | function definition
+	zzext = -3,     // ext [function_name][args]    | extern function definition
+	zzlet = -4,     // let [variable_name] = [args] | variable declaration
 
 	/* types */
-	zzidentifier = -4, // for example: x
-	zznumber     = -5, // for example: 2
-	zzstring     = -6  // for example: "Hello"
+	zzidentifier = -5, // for example: x
+	zznumber     = -6, // for example: 2
+	zzstring     = -7  // for example: "Hello"
 } zztoken;
 
 
@@ -54,6 +55,8 @@ static zztoken gettok(std::fstream file) {
 			return zzfun;
 		else if (identifier == "ext") // extern function
 			return zzext;
+		else if (identifier == "let") // variable declaration
+			return zzlet;
 
 		return zzidentifier;
 
